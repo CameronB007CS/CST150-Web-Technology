@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CST150 - Lab 3</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>CST150 - Lab 3: JavaScript Fundamentals</header>
+    <nav>
+        <button class="hamburger" onclick="toggleMenu()">☰</button>
+        <ul id="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>DOM Manipulation</h2>
+        <p>Click the button below to see JavaScript change the page in real time.</p>
+
+        <button id="changeText">Click Me</button>
+        <p id="text">This text will change.</p>
+
+        <!-- Bonus: Live text input -->
+        <h3>Live Text Input</h3>
+        <input type="text" id="userInput" placeholder="Type something...">
+        <p id="liveText">Your text will appear here.</p>
+
+        <!-- Bonus: Clock -->
+        <h3>Real-Time Clock</h3>
+        <p id="clock"></p>
+    </main>
+    <aside>
+        <h3>About This Lab</h3>
+        <p>This lab covers JavaScript variables, functions, DOM manipulation, and console debugging.</p>
+    </aside>
+    <footer>CST150 Web Technology &mdash; Cameron</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
