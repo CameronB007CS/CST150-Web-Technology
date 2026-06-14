@@ -9,19 +9,19 @@
             font-family: 'Comic Sans MS', cursive; /* proper font name needs quotes */
             background-color: #f9f5f0;
             margin: 0 20px 0 20px; /* px was missing here */
-            padding: 20px; /* "top 20px" isn't a thing lol */
+            padding: 20px; /* "top 20px" is not valid syntax */
         }
 
         header {
             background-color: darkblue;
             text-align: center; /* typo - "aling" should be "align" */
             padding: 20px; /* was only on top, added all sides */
-            color: white; /* this was just... not there */
+            color: white; /* color property was missing */
         }
 
         nav {
             background-color: #333; /* nav had no background at all */
-            display: block; /* "blocks" isn't valid */
+            display: block; /* "blocks" is not valid */
             overflow: hidden; /* needed so floated children don't collapse */
         }
 
@@ -32,12 +32,12 @@
         }
 
         nav li {
-            float: left; /* float doesn't accept "center", only left/right */
+            float: left; /* float doesn't accept "center", only left or right */
             list-style: none;
         }
 
         nav a {
-            display: block; /* "hiding" is not a display type lmao */
+            display: block; /* "hiding" is not a valid display type */
             padding: 15px; /* was only top and bottom before */
             text-decoration: none; /* forgot to remove the underline */
             color: white;
@@ -46,7 +46,7 @@
         }
 
         nav a:hover {
-            background-color: #555; /* hover was completely missing */
+            background-color: #555; /* hover effect was completely missing */
         }
 
         main {
@@ -58,7 +58,7 @@
         .menu-section {
             border: 1px dotted #ccc; /* wrong order and had commas in it */
             border-radius: 10px; /* "border-round" is not a real property */
-            margin-bottom: 20px; /* was just absent */
+            margin-bottom: 20px; /* margin-bottom was missing */
         }
 
         .menu-item {
@@ -73,20 +73,20 @@
         }
 
         .item-price {
-            font-style: italic; /* "bigger" isn't a font-style value */
+            font-style: italic; /* "bigger" isn't a valid font-style value */
             float: right; /* "right-side" -> "right" */
-            color: #333; /* colour was missing entirely */
+            color: #333; /* color property was missing */
         }
 
         .item-description {
             color: grey; /* "grey+" isn't valid */
             font-size: small; /* "small-medium" isn't a thing */
-            margin-top: 5px; /* was missing */
+            margin-top: 5px; /* margin-top was missing */
         }
 
         .food-image {
             width: 100%; /* "100percents" -> "%" */
-            height: auto; /* can't have two values for height like that */
+            height: auto; /* can't have two values for height */
             border-radius: 15px; /* missing px */
             margin: 10px 0 20px 0; /* can't use "top/bottom" keywords in margin shorthand */
         }
@@ -100,7 +100,7 @@
         footer {
             text-align: center; /* "middle" isn't a valid text-align value */
             background-color: navy; /* "navy-blue" isn't valid, just use "navy" */
-            color: white; /* was missing */
+            color: white; /* color property was missing */
             padding: 10px;
         }
 
