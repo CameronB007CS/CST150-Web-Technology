@@ -1,0 +1,300 @@
+/* Bonus: CSS variables for light and dark mode */
+:root {
+    --bg: #f8f9fa;
+    --surface: #ffffff;
+    --text: #333333;
+    --heading: #0056b3;
+    --accent: #ff6600;
+    --nav-bg: #2f5d8c;
+    --nav-item: #24496e;
+    --nav-hover: #18324d;
+    --header-bg: #1e3a5f;
+    --footer-bg: #1e3a5f;
+    --aside-bg: #e2e8f0;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* dark mode values swapped in by JS adding .dark to the body */
+body.dark {
+    --bg: #1a1a2e;
+    --surface: #16213e;
+    --text: #e0e0e0;
+    --heading: #61a0ff;
+    --accent: #ff8c42;
+    --nav-bg: #0f3460;
+    --nav-item: #1a4a7a;
+    --nav-hover: #0a2440;
+    --header-bg: #0f3460;
+    --footer-bg: #0f3460;
+    --aside-bg: #16213e;
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+/* Task 1: Poppins font, improved colours and line height */
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "nav aside"
+        "footer footer";
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr auto auto;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease; /* smooth dark mode switch */
+}
+
+/* Bonus: Playfair Display for headings */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--heading);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Task 2: container for max-width and centring */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    grid-area: header;
+    background-color: var(--header-bg);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1, header h2, header h3 {
+    color: white; /* override the blue heading colour inside the dark header */
+}
+
+#darkModeToggle {
+    margin-top: 10px;
+    background-color: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#darkModeToggle:hover {
+    background-color: white;
+    color: var(--header-bg);
+}
+
+nav {
+    grid-area: nav;
+    background-color: var(--nav-bg);
+    padding: 20px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    background-color: var(--nav-item);
+    border-radius: 6px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: var(--nav-hover);
+    text-decoration: none;
+}
+
+#sidebarToggle {
+    display: none;
+    width: 100%;
+    background-color: var(--nav-item);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+main {
+    grid-area: main;
+    padding: 20px;
+}
+
+/* Task 2: section spacing and card style */
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: var(--surface);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow);
+    animation: fadeIn 1s ease-in-out; /* Task 3: fade in on load */
+    transition: background-color 0.3s ease;
+}
+
+aside {
+    grid-area: aside;
+    background-color: var(--aside-bg);
+    padding: 20px;
+    transition: background-color 0.3s ease;
+}
+
+footer {
+    grid-area: footer;
+    background-color: var(--footer-bg);
+    color: white;
+    text-align: center;
+    padding: 15px;
+    transition: background-color 0.3s ease;
+}
+
+.card {
+    background-color: var(--surface);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px var(--shadow);
+    transition: background-color 0.3s ease;
+}
+
+/* Task 3: button with smooth transition */
+button {
+    background-color: #0056b3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: #003d82;
+}
+
+/* Task 3: fade in animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* gallery - flexbox with three columns */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gallery-item {
+    flex: 1 1 calc(33.333% - 10px);
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05);
+}
+
+/* tablet */
+@media (max-width: 768px) {
+    body {
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "aside"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        min-width: 100px;
+    }
+
+    #sidebarToggle {
+        display: block;
+    }
+
+    #navLinks {
+        display: none;
+    }
+
+    #navLinks.open {
+        display: flex;
+    }
+
+    .gallery-item {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+/* mobile */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    main, aside {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    .gallery-item {
+        flex: 1 1 100%;
+    }
+}
