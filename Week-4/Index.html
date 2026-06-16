@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 4 Responsive Frontend with JavaScript</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Responsive Frontend Development</h1>
+        <p>Combining Lab 3 JavaScript with Lab 4 Responsive Design</p>
+    </header>
+    <nav>
+        <button id="sidebarToggle">☰ Menu</button>
+        <ul id="navLinks">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Activities</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section class="card">
+            <h2>Lab 3 JavaScript Activity</h2>
+            <p id="text">This text will change when you click the button.</p>
+            <button id="changeText">Click Me</button>
+        </section>
+        <section class="card">
+            <h2>Real-Life Example</h2>
+            <p>
+                Imagine this is a student portfolio website. The layout changes
+                depending on whether the visitor is using a laptop, tablet, or phone.
+            </p>
+        </section>
+
+        <!-- BONUS CHALLENGE: Photo Gallery -->
+        <section class="card">
+            <h2>Image Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item"><img src="https://picsum.photos/seed/1/400/300" alt="Gallery image 1" /></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/2/400/300" alt="Gallery image 2" /></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/3/400/300" alt="Gallery image 3" /></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/4/400/300" alt="Gallery image 4" /></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/5/400/300" alt="Gallery image 5" /></div>
+                <div class="gallery-item"><img src="https://picsum.photos/seed/6/400/300" alt="Gallery image 6" /></div>
+            </div>
+        </section>
+    </main>
+    <aside id="sidebar">
+        <h2>Sidebar</h2>
+        <p>Useful links, announcements, or extra course notes can go here.</p>
+    </aside>
+    <footer>
+        <p>&copy; 2024 CST150 Web Technologies</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
