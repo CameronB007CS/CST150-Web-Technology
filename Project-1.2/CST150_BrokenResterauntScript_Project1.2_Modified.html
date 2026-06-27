@@ -149,7 +149,7 @@
         /* Hero */
         .hero {
             height: 450px;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://picsum.photos/seed/bistro/1200/400') center/cover no-repeat;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1200') center/cover no-repeat;
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -190,7 +190,7 @@
         .btn:hover {
             background-color: var(--accent-hover);
             text-decoration: none;
-            transform: translateY(-2px); /* subtle lift on hover */
+            transform: translateY(-2px);
         }
 
         /* Menu section */
@@ -534,7 +534,6 @@
     <section id="menu" class="menu-section">
         <h2 class="section-title">Our Menu</h2>
 
-        <!-- filter buttons tied to data-category on each card -->
         <div class="filter-buttons">
             <button class="filter-btn active" onclick="filterMenu('all')">All</button>
             <button class="filter-btn" onclick="filterMenu('seafood')">Seafood</button>
@@ -544,25 +543,25 @@
 
         <div class="menu-items">
             <div class="menu-item" data-category="seafood">
-                <img src="https://picsum.photos/seed/salmon/300/200" alt="Grilled Salmon">
+                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=300" alt="Grilled Salmon">
                 <h3>Grilled Salmon</h3>
                 <p>Fresh Atlantic salmon with lemon-dill sauce, served with seasonal vegetables.</p>
                 <p class="price">$28.95</p>
             </div>
             <div class="menu-item" data-category="meat">
-                <img src="https://picsum.photos/seed/steak/300/200" alt="Filet Mignon">
+                <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=300" alt="Filet Mignon">
                 <h3>Filet Mignon</h3>
                 <p>Prime cut beef tenderloin, garlic butter, truffle mashed potatoes.</p>
                 <p class="price">$34.95</p>
             </div>
             <div class="menu-item" data-category="vegetarian">
-                <img src="https://picsum.photos/seed/risotto/300/200" alt="Mushroom Risotto">
+                <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=300" alt="Mushroom Risotto">
                 <h3>Mushroom Risotto</h3>
                 <p>Creamy Arborio rice with wild mushrooms, white wine, and Parmesan.</p>
                 <p class="price">$22.95</p>
             </div>
             <div class="menu-item" data-category="meat">
-                <img src="https://picsum.photos/seed/duck/300/200" alt="Duck Confit">
+                <img src="https://images.unsplash.com/photo-1519984388953-d2406bc725e1?w=300" alt="Duck Confit">
                 <h3>Duck Confit</h3>
                 <p>Slow-cooked duck leg with orange glaze and roasted root vegetables.</p>
                 <p class="price">$30.95</p>
@@ -619,8 +618,6 @@
         <h2 class="section-title" style="text-align:center;">Make a Reservation</h2>
         <div class="contact-container">
             <div class="contact-form" style="width:100%; max-width:600px; margin:0 auto;">
-
-                <!-- confirmation summary shown before final submit -->
                 <div class="confirmation-summary" id="confirmationSummary">
                     <h4>Please confirm your reservation:</h4>
                     <p id="summaryContent"></p>
@@ -741,7 +738,6 @@
         // Contact form with inline validation
         document.getElementById('contactForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            let valid = true;
 
             const name = document.getElementById('name').value.trim();
             const email = document.getElementById('email').value.trim();
@@ -769,7 +765,6 @@
         // Reservation form with confirmation summary
         document.getElementById('reservationForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            let valid = true;
 
             const name = document.getElementById('res-name').value.trim();
             const email = document.getElementById('res-email').value.trim();
@@ -792,7 +787,6 @@
 
             if (name === '' || !emailPattern.test(email) || phone === '' || !date || selectedDate < today || time === '' || !guests) return;
 
-            /* show confirmation summary before final submit */
             document.getElementById('summaryContent').innerHTML =
                 `<strong>Name:</strong> ${name}<br>
                  <strong>Email:</strong> ${email}<br>
