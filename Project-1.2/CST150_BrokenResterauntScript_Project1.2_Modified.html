@@ -377,7 +377,6 @@
             border-color: var(--accent);
         }
 
-        /* inline validation error messages */
         .error-message {
             color: #e74c3c;
             font-size: 0.8rem;
@@ -389,7 +388,6 @@
             display: block;
         }
 
-        /* character counter */
         .char-counter {
             font-size: 0.75rem;
             color: var(--muted);
@@ -401,7 +399,6 @@
             color: #e67e22;
         }
 
-        /* confirmation summary box */
         .confirmation-summary {
             background-color: var(--bg);
             border: 1px solid var(--border);
@@ -461,13 +458,11 @@
             text-decoration: none;
         }
 
-        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* tablet */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
@@ -489,7 +484,6 @@
             }
         }
 
-        /* mobile */
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 1.8rem;
@@ -519,7 +513,7 @@
                     <li><a href="#reservations">Reservations</a></li>
                 </ul>
             </nav>
-            <button id="darkModeToggle"> Dark Mode</button>
+            <button id="darkModeToggle">Dark Mode</button>
         </div>
     </header>
 
@@ -533,14 +527,12 @@
 
     <section id="menu" class="menu-section">
         <h2 class="section-title">Our Menu</h2>
-
         <div class="filter-buttons">
             <button class="filter-btn active" onclick="filterMenu('all')">All</button>
             <button class="filter-btn" onclick="filterMenu('seafood')">Seafood</button>
             <button class="filter-btn" onclick="filterMenu('meat')">Meat</button>
             <button class="filter-btn" onclick="filterMenu('vegetarian')">Vegetarian</button>
         </div>
-
         <div class="menu-items">
             <div class="menu-item" data-category="seafood">
                 <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=300" alt="Grilled Salmon">
@@ -626,7 +618,6 @@
                         <button class="btn" id="editBtn" style="background-color:#7f8c8d;">Edit</button>
                     </div>
                 </div>
-
                 <form id="reservationForm">
                     <div class="form-group">
                         <label for="res-name">Name</label>
