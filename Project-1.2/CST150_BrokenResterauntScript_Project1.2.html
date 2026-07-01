@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bistro Elegante - Fine Dining Experience</title>
+    <style>
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header - changed to row layout so logo and nav sit side by side */
+        header {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            flex-direction: row; /* was column, which stacked everything vertically */
+            align-items: center; /* was flex-start, items were misaligned */
+            justify-content: space-between; /* was "start" which isn't valid */
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0; /* removed the margin that was pushing the nav down */
+        }
+
+        /* Navigation - added gap and wrap so links have breathing room */
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap; /* was nowrap, links would overflow on smaller screens */
+            gap: 1rem; /* was 0, no spacing between nav items at all */
+        }
+
+        nav ul li {
+            margin-left: 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.8rem 1rem; /* increased padding, was too tight before */
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #f1c40f;
+        }
+
+        /* Hero - changed to column so heading stacks above the button properly */
+        .hero {
+            height: 400px;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('/api/placeholder/1200/400') center/cover no-repeat;
+            color: #fff;
+            display: flex;
+            flex-direction: column; /* was row, content was spreading sideways */
+            justify-content: center;
+            align-items: center; /* was flex-start, everything hugged the left */
+            text-align: center; /* was left, looks much better centered */
+            padding: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e74c3c;
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Menu section */
+        .menu-section {
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2c3e50;
+        }
+
+        /* Menu items - added wrap and gap so cards flow into a proper grid */
+        .menu-items {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap; /* was nowrap, all cards were stuck in one long row */
+            justify-content: center;
+            gap: 1.5rem; /* was 0, cards were crammed together */
+            margin: 0 auto;
+            max-width: 1200px;
+            overflow-x: visible; /* was scroll, not needed now that wrap is on */
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            margin: 0.5rem; /* added margin so cards have space around them */
+            width: 300px;
+            flex-shrink: 1; /* was 0, cards couldn't shrink on smaller screens */
+        }
+
+        .menu-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .menu-item h3 {
+            margin: 1rem 0;
+            color: #2c3e50;
+        }
+
+        .menu-item p {
+            margin-bottom: 1rem;
+            color: #7f8c8d;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+
+        /* About section */
+        .about-section {
+            background-color: #2c3e50;
+            color: #fff;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .about-section .section-title {
+            color: #fff;
+        }
+
+        /* Contact section - changed to row so info and form sit side by side */
+        .contact-section {
+            padding: 3rem 1rem;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-direction: row; /* was column, both panels were stacked */
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info, .contact-form {
+            padding: 1rem;
+            width: 50%; /* was 100%, both panels took up the full width */
+        }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        /* Footer - changed to column so social links and copyright stack properly */
+        footer {
+            background-color: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column; /* was row, content was awkwardly side by side */
+            gap: 1rem; /* was 0, no spacing between footer elements */
+        }
+
+        .footer-content, .copyright {
+            margin: 0.5rem 0; /* added vertical margin for spacing */
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center; /* was left, social links were misaligned */
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+
+        /* Media queries - filled in the missing responsive styles */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column; /* stack logo above nav on mobile */
+                align-items: flex-start;
+            }
+
+            .menu-items {
+                flex-direction: column; /* stack menu cards vertically on mobile */
+                align-items: center;
+            }
+
+            .contact-container {
+                flex-direction: column; /* stack contact panels on mobile */
+            }
+
+            .contact-info, .contact-form {
+                width: 100%; /* full width on mobile */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Bistro Elegante</div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#reservations">Reservations</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Experience Fine Dining</h1>
+            <p>Indulge in exceptional cuisine, elegant atmosphere, and impeccable service.</p>
+            <a href="#reservations" class="btn">Make a Reservation</a>
+        </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Our Menu</h2>
+        <div class="menu-items">
+            <div class="menu-item">
+                <img src="/api/placeholder/300/200" alt="Grilled Salmon">
+                <h3>Grilled Salmon</h3>
+                <p>Fresh Atlantic salmon with lemon-dill sauce, served with seasonal vegetables.</p>
+                <p class="price">$28.95</p>
+            </div>
+            <div class="menu-item">
+                <img src="/api/placeholder/300/200" alt="Filet Mignon">
+                <h3>Filet Mignon</h3>
+                <p>Prime cut beef tenderloin, garlic butter, truffle mashed potatoes.</p>
+                <p class="price">$34.95</p>
+            </div>
+            <div class="menu-item">
+                <img src="/api/placeholder/300/200" alt="Mushroom Risotto">
+                <h3>Mushroom Risotto</h3>
+                <p>Creamy Arborio rice with wild mushrooms, white wine, and Parmesan.</p>
+                <p class="price">$22.95</p>
+            </div>
+            <div class="menu-item">
+                <img src="/api/placeholder/300/200" alt="Duck Confit">
+                <h3>Duck Confit</h3>
+                <p>Slow-cooked duck leg with orange glaze and roasted root vegetables.</p>
+                <p class="price">$30.95</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2 class="section-title">About Bistro Elegante</h2>
+        <p>Founded in 2010, Bistro Elegante brings the finest culinary experiences to your table. Our chef, with over 20 years of experience in Michelin-starred restaurants, crafts each dish with passion and precision.</p>
+        <p>We source our ingredients locally whenever possible, supporting sustainable farming and providing the freshest flavors.</p>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <h2 class="section-title">Contact Us</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p>39 Regent Street</p>
+                <p>Culinary District</p>
+                <p>Chippendale, NSW 2008</p>
+                <h3>Hours</h3>
+                <p>Tuesday - Sunday: 5:00 PM - 10:00 PM</p>
+                <p>Closed on Mondays</p>
+                <h3>Call Us</h3>
+                <p>(+61) 123-4567</p>
+            </div>
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="reservations" class="contact-section">
+        <h2 class="section-title">Make a Reservation</h2>
+        <div class="contact-container">
+            <div class="contact-form">
+                <form id="reservationForm">
+                    <div class="form-group">
+                        <label for="res-name">Name</label>
+                        <input type="text" id="res-name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="res-email">Email</label>
+                        <input type="email" id="res-email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="res-phone">Phone</label>
+                        <input type="tel" id="res-phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="res-date">Date</label>
+                        <input type="date" id="res-date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="res-time">Time</label>
+                        <input type="time" id="res-time" name="time" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="res-guests">Number of Guests</label>
+                        <input type="number" id="res-guests" name="guests" min="1" max="10" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="res-notes">Special Requests</label>
+                        <textarea id="res-notes" name="notes" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Request Reservation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">Twitter</a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Bistro Elegante. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Contact form - added event parameter and preventDefault so the page doesn't reload on submit
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+
+            // Basic validation to make sure fields aren't empty before submitting
+            if (name === '' || email === '' || message === '') {
+                alert('Please fill in all fields before submitting.');
+                return;
+            }
+
+            alert('Thank you for your message. We will contact you soon!');
+            this.reset(); /* clears the form after submission */
+        });
+
+        // Reservation form - fixed the broken validation and added proper date check
+        document.getElementById('reservationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('res-name').value;
+            const email = document.getElementById('res-email').value;
+            const date = document.getElementById('res-date').value;
+            const time = document.getElementById('res-time').value;
+            const guests = document.getElementById('res-guests').value;
+
+            // was using = (assignment) instead of === (comparison) - classic mistake
+            if (name === '') {
+                alert('Please enter your name.');
+                return;
+            }
+
+            // added basic email format check using a regex pattern
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // date validation - checks that the selected date isn't in the past
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const selectedDate = new Date(date);
+            if (selectedDate < today) {
+                alert('Please select a date in the future.');
+                return;
+            }
+
+            alert('Thank you for your reservation request. We will confirm shortly!');
+            this.reset(); /* clears the form after submission */
+        });
+
+        // Menu filter - added proper show/hide logic based on category
+        function filterMenu(category) {
+            const menuItems = document.querySelectorAll('.menu-item');
+            menuItems.forEach(item => {
+                /* shows all items if no category, otherwise checks the data-category attribute */
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Smooth scroll - was missing the actual scrollIntoView call
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                // scrolls smoothly to the target section instead of jumping
+                if (targetSection) {
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

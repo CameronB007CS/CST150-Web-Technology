@@ -1,0 +1,201 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "nav aside"
+        "footer footer";
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr auto auto;
+    min-height: 100vh;
+    background-color: #f4f4f4;
+}
+
+header {
+    grid-area: header;
+    background-color: #1e3a5f;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+nav {
+    grid-area: nav;
+    background-color: #2f5d8c;
+    padding: 20px;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+nav a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    background-color: #24496e;
+    border-radius: 6px;
+    text-align: center;
+}
+
+nav a:hover {
+    background-color: #18324d;
+}
+
+/* hamburger button hidden on desktop */
+#sidebarToggle {
+    display: none;
+    width: 100%;
+    background-color: #24496e;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+main {
+    grid-area: main;
+    padding: 20px;
+}
+
+aside {
+    grid-area: aside;
+    background-color: #e2e8f0;
+    padding: 20px;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #1e3a5f;
+    color: white;
+    text-align: center;
+    padding: 15px;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+    background-color: #2f5d8c;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #1e3a5f;
+}
+
+/* Bonus: gallery using flexbox - wraps into rows automatically */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.gallery-item {
+    flex: 1 1 calc(33.333% - 10px); /* three columns on desktop */
+    overflow: hidden;
+    border-radius: 6px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img:hover {
+    transform: scale(1.05); /* slight zoom on hover for a nice touch */
+}
+
+/* tablet and below - single column layout */
+@media (max-width: 768px) {
+    body {
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "aside"
+            "footer";
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        min-width: 100px;
+    }
+
+    /* Bonus: show toggle button and hide nav links by default on mobile */
+    #sidebarToggle {
+        display: block;
+    }
+
+    #navLinks {
+        display: none;
+    }
+
+    /* class added by JS when toggle is clicked */
+    #navLinks.open {
+        display: flex;
+    }
+
+    /* gallery drops to two columns on tablet */
+    .gallery-item {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+/* mobile - tighten spacing and full width button */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 24px;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+
+    main,
+    aside {
+        padding: 15px;
+    }
+
+    button {
+        width: 100%;
+    }
+
+    /* gallery goes single column on mobile */
+    .gallery-item {
+        flex: 1 1 100%;
+    }
+}
