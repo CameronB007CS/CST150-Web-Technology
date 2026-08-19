@@ -17,6 +17,9 @@ button.addEventListener("click", function() {
     console.log("Button clicked - text updated.");
 });
 
+// Task 2: Call greetUser on page load
+document.addEventListener("DOMContentLoaded", greetUser);
+
 // Bonus 1: Live input - updates paragraph as user types
 let userInput = document.getElementById("userInput");
 let liveText = document.getElementById("liveText");
@@ -35,6 +38,3 @@ function updateClock() {
 }
 
 setInterval(updateClock, 1000);
-
-// Task 2: Call greetUser on page load
-document.addEventListener("DOMContentLoaded", greetUser);

@@ -51,6 +51,7 @@ footer {
     text-align: center;
 }
 
+/* nav styles */
 nav ul {
     list-style: none;
     padding: 0;
@@ -65,6 +66,7 @@ nav a {
     padding: 10px;
 }
 
+/* button styles */
 #changeText {
     margin-top: 10px;
     padding: 10px 20px;
@@ -86,6 +88,7 @@ nav a {
     transition: color 0.3s ease;
 }
 
+/* hamburger button - hidden on desktop */
 .hamburger {
     display: none;
     background: none;

@@ -1,0 +1,322 @@
+/*
+    Weeks 3-6 all in one CSS file
+    Week 3 - button and paragraph styling
+    Week 4 - CSS Grid layout, Flexbox nav, media queries
+    Week 5 - fonts, colors, spacing, cards, transitions, animations
+    Week 6 - form styling, input focus states, auth status message
+*/
+
+/* makes padding and borders behave sensibly across everything */
+* {
+    box-sizing: border-box;
+}
+
+/* Week 5 typography and colors, Week 4 CSS Grid layout */
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    /* CSS Grid arranges the main page sections */
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "nav aside"
+        "footer footer";
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: auto 1fr auto auto;
+    min-height: 100vh;
+}
+
+/* keeping headings dark so they stand out */
+h1, h2, h3 {
+    color: #08010b;
+}
+
+/* orange links look clean against the light background */
+a {
+    color: #ff6600;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* header takes up the full top row in the grid */
+header {
+    grid-area: header;
+    background: #92b7e1;
+    color: white;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+/* override heading color inside header so it stays white */
+header h1 {
+    color: white;
+    margin-bottom: 10px;
+}
+
+header p {
+    margin: 0;
+    color: #e9ecef;
+}
+
+/* nav sits in the left column of the grid */
+nav {
+    grid-area: nav;
+    background: #4c4752;
+    padding: 20px;
+}
+
+/* Flexbox stacks the nav links vertically */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* nav links styled as buttons with smooth hover */
+nav a {
+    text-decoration: none;
+    color: white;
+    background: #443d5e;
+    padding: 10px;
+    display: block;
+    border-radius: 6px;
+    text-align: center;
+    transition: background 0.3s ease-in-out;
+}
+
+nav a:hover {
+    background: #003d82;
+    text-decoration: none;
+}
+
+/* main content takes up the right column */
+main {
+    grid-area: main;
+    padding: 20px;
+}
+
+/* container keeps content from stretching too wide on large screens */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* card style for each section - white, rounded, shadow, fades in */
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1s ease-in-out;
+}
+
+/* button styling used by both Week 3 and Week 6 */
+button,
+#changeText {
+    background: #0056b3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'Poppins', Arial, sans-serif;
+    transition: background 0.3s ease-in-out;
+}
+
+button:hover,
+#changeText:hover {
+    background: #003d82;
+}
+
+/* Week 3 paragraph that gets changed by JS */
+#text {
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+/* sidebar sits below main in the right column */
+aside {
+    grid-area: aside;
+    background: #e9ecef;
+    padding: 20px;
+}
+
+aside ul {
+    padding-left: 20px;
+}
+
+aside li {
+    margin-bottom: 8px;
+}
+
+/* footer spans the full bottom row */
+footer {
+    grid-area: footer;
+    background: #003d82;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* simple fade in used on all sections */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* blue left border makes the Week 6 form section stand out */
+.week6-form-section {
+    border-left: 6px solid #0056b3;
+}
+
+/* form fields stack vertically with gap between them */
+#userForm {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* each label + input pair */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #08010b;
+}
+
+.form-group input {
+    padding: 12px;
+    border: 2px solid #d0d7de;
+    border-radius: 6px;
+    font-size: 16px;
+    font-family: 'Poppins', Arial, sans-serif;
+}
+
+/* blue glow when user clicks into an input */
+.form-group input:focus {
+    outline: none;
+    border-color: #0056b3;
+    box-shadow: 0 0 0 3px rgba(0, 86, 179, 0.15);
+}
+
+/* bonus: character counter under the name field */
+.char-counter {
+    font-size: 0.75rem;
+    color: #7f8c8d;
+    text-align: right;
+}
+
+/* turns orange when getting close to the limit */
+.char-counter.near-limit {
+    color: #e67e22;
+}
+
+/* blue hint box below the form */
+.form-help {
+    margin-top: 15px;
+    padding: 12px;
+    background: #e9f3ff;
+    border-radius: 6px;
+    font-size: 15px;
+}
+
+/* yellow warning style before form is submitted */
+.auth-status {
+    margin-top: 15px;
+    padding: 12px;
+    background: #fff3cd;
+    border-left: 5px solid #ffc107;
+    border-radius: 6px;
+    font-weight: 600;
+}
+
+/* JS adds "complete" class to swap it to green */
+.auth-status.complete {
+    background: #d1e7dd;
+    border-left-color: #198754;
+    color: #0f5132;
+}
+
+/* bonus: inline success message instead of an alert */
+.success-message {
+    margin-top: 15px;
+    padding: 15px;
+    background: #d1e7dd;
+    border-left: 5px solid #198754;
+    border-radius: 6px;
+    color: #0f5132;
+    font-weight: 600;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* tablet - switch to single column */
+@media (max-width: 768px) {
+    body {
+        grid-template-areas:
+            "header"
+            "nav"
+            "main"
+            "aside"
+            "footer";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    /* nav links go horizontal on tablet */
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        padding: 8px 12px;
+    }
+}
+
+/* mobile - tighten everything up */
+@media (max-width: 480px) {
+    header, nav, main, aside, footer {
+        padding: 15px;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    /* full width buttons are easier to tap on mobile */
+    button,
+    #changeText,
+    #userForm button {
+        width: 100%;
+    }
+
+    section {
+        padding: 15px;
+    }
+}

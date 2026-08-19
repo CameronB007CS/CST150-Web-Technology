@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!--
+    Weeks 3-6 all rolled into one file.
+    Week 3 - JS button that changes text
+    Week 4 - proper page layout with header, nav, main, aside, footer
+    Week 5 - made it look actually decent with fonts, colors and spacing
+    Week 6 - added a form that processes user input with JS
+-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- stops mobile from zooming out and making everything tiny -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6 Processing User Input</title>
+    <!-- Poppins from Google Fonts - looks way cleaner than default browser fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- styles.css handles layout, design and form styling across all weeks -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- CSS Grid in styles.css arranges all these sections on the page -->
+    <header>
+        <h1>Frontend Aesthetics and User Input</h1>
+        <p>Lab 5 + Week 6: Layout, aesthetics, and processing user input with JavaScript</p>
+    </header>
+    <nav>
+        <!-- nav links styled with Flexbox in styles.css -->
+        <ul>
+            <li><a href="https://drive.google.com/file/d/1ey6QflzfadHW0l6IzOA9uZdo0HqQXXyo/view" target="_blank">Home</a></li>
+            <li><a href="https://www.youtube.com/" target="_blank">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <!-- container class keeps content from stretching too wide -->
+        <section>
+            <!-- each section is a card - white bg, rounded corners, shadow, fade-in -->
+            <h2>Main Content</h2>
+            <p>Week 5 stuff - the page looks more polished now with better typography, colors and spacing.</p>
+            <p>A visually appealing website is easier to read and more professional.</p>
+        </section>
+        <section>
+            <!-- keeping the Week 3 JS button activity alive in here -->
+            <h2>Week 3 JavaScript Activity</h2>
+            <p>Click the button below to test if the JavaScript from Week 3 still works.</p>
+            <!-- script.js targets this button by id -->
+            <button id="changeText">Click Me</button>
+            <!-- script.js changes this paragraph when the button is clicked -->
+            <p id="text">This text will change.</p>
+        </section>
+        <section>
+            <!-- real world context for why aesthetics matter -->
+            <h2>Real-Life Example</h2>
+            <p>Imagine this is a student portfolio website. A clean font, consistent colors, enough spacing, and simple cards make the page easier for visitors to understand.</p>
+            <p>In real life, websites like uni pages, online shops and portfolios all use typography, color and spacing to create a better user experience.</p>
+        </section>
+        <section class="week6-form-section">
+            <!--
+                Week 6 form - JS will:
+                1. read the name and email fields
+                2. check neither field is empty
+                3. use preventDefault() to stop the page refreshing
+                4. save the data to localStorage
+                5. show a success message when done
+
+                think of it like a student signing up for a school event
+            -->
+            <h2>Week 6: Processing User Input with JavaScript</h2>
+            <p>Real-life example: a student joining a school event or club. The site needs their name and email before confirming registration.</p>
+            <form id="userForm">
+                <div class="form-group">
+                    <label for="name">Student Name</label>
+                    <!-- maxlength ties into the character counter in script.js -->
+                    <input type="text" id="name" name="name" placeholder="Enter your name" maxlength="50">
+                    <span class="char-counter" id="nameCounter">0 / 50</span>
+                </div>
+                <div class="form-group">
+                    <label for="email">Student Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email">
+                </div>
+                <button type="submit">Register</button>
+            </form>
+            <!-- bonus: success message shown inline instead of an alert -->
+            <div id="successMessage" class="success-message" style="display:none;">
+                <p id="successText"></p>
+            </div>
+            <p id="authStatus" class="auth-status">Registration status: Not completed</p>
+            <p class="form-help">
+                Try submitting with empty fields first - JS will catch it and stop the form.
+                Once valid info is submitted, it gets saved and authentication shows complete.
+            </p>
+        </section>
+    </main>
+    <aside>
+        <!-- sidebar on desktop, drops below main content on mobile -->
+        <h2>Lab 5 + Week 6 Checklist</h2>
+        <ul>
+            <li>Use Poppins font</li>
+            <li>Apply a clean color scheme</li>
+            <li>Add readable line spacing</li>
+            <li>Use card-style sections</li>
+            <li>Add button hover transition</li>
+            <li>Add fade-in animation</li>
+            <li>Keep Week 3 JavaScript working</li>
+            <li>Keep Week 4 responsive layout working</li>
+            <li>Add Week 6 user input form</li>
+            <li>Validate name and email using JavaScript</li>
+            <li>Save user information using localStorage</li>
+            <li>Show registration and authentication complete</li>
+        </ul>
+    </aside>
+    <footer>
+        <p>Footer - CST150 Web Technologies</p>
+    </footer>
+    <!-- script.js goes here so the HTML loads before JS tries to find elements -->
+    <script src="script.js"></script>
+</body>
+</html>
